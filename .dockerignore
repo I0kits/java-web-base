@@ -1,19 +1,22 @@
 .git/
-.auto/
 .idea/
 .gradle/
 .gitignore
 .editorconfig
 .dockerignore
 
+out/
 build/
-config/
 gradle/
-src/test/
 
 README.md
 Dockerfile
-docker-compose.yaml
+lombok.config
+docker-compose.yml
 
 gradlew
 gradlew.bat
+
+*.iml
+*.ipr
+*.iws

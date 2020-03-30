@@ -1,13 +1,13 @@
 plugins {
-	id 'org.springframework.boot' version '2.2.5.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id 'org.asciidoctor.convert' version '1.5.8'
 	id 'java'
 	id 'idea'
+  id 'org.asciidoctor.convert' version '1.5.8'
+  id 'org.springframework.boot' version '2.2.5.RELEASE'
+  id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
 
+version = ''
 group = 'com.github.i0kits'
-version = '0.0.1'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -27,17 +27,24 @@ ext {
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.data:spring-data-rest-hal-explorer'
 
+  implementation 'org.springframework.boot:spring-boot-starter-logging'
+  implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+  runtimeOnly 'com.h2database:h2'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.h2database:h2'
 	annotationProcessor 'org.projectlombok:lombok'
+
+  testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+  testImplementation 'org.junit.jupiter:junit-jupiter-api'
 }
 
 test {
@@ -46,6 +53,14 @@ test {
 }
 
 asciidoctor {
-	inputs.dir snippetsDir
-	dependsOn test
+  logDocuments true
+  options doctype: 'book'
+  attributes 'revnumber': '1.0.0'
+  attributes 'source-highlighter': 'coderay'
+  doLast {
+    copy {
+      from "$outputDir/html5"
+      into "$project.buildDir/resources/main/static/docs"
+    }
+  }
 }

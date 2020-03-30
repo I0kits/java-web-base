@@ -1,0 +1,25 @@
+= The Documentation of Java Web Applicaton Base
+:toc: left
+:sectnums:
+
+== 介绍
+Java Web Applicaton Base是一个基于 https://spring.io/projects/spring-boot[SpringBoot] 的后端API服务开发脚手架。
+本文旨在演示通过 https://spring.io/projects/spring-restdocs[Spring REST Docs] 实现「测试驱动Restful APIs文档」生成的完整过程。
+Gradle的插件 https://asciidoctor.github.io/asciidoctor-gradle-plugin/development-3.x[asciidoctor-gradle-plugin] 是生成文档的
+底层工具，它提供了 https://asciidoctor.org[AsciiDoc]工具链在JVM平台上的完全支撑。
+
+
+== Departments Apis
+Collection of CRUD API endpoints used to manipulate departments in the application.
+
+=== Get Department list
+Obtains a specific person registered in the application by its unique identifier.
+
+==== CURL sample
+include::{snippets}/departments/index/curl-request.adoc[]
+
+==== Sample Request
+include::{snippets}/departments/index/http-request.adoc[]
+
+==== Sample Response
+include::{snippets}/departments/index/http-response.adoc[]

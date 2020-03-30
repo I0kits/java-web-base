@@ -8,6 +8,7 @@ class AppTests {
 
 	@Test
 	void contextLoads() {
+    System.out.println("==========");
 	}
 
 }
