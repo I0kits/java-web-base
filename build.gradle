@@ -1,3 +1,13 @@
+buildscript {
+  repositories {
+    mavenLocal()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    jcenter()
+    mavenCentral()
+  }
+}
+
 plugins {
 	id 'java'
 	id 'idea'
@@ -16,8 +26,16 @@ configurations {
 	}
 }
 
-repositories {
-	mavenCentral()
+allprojects {
+  repositories {
+    mavenLocal()
+
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+
+    jcenter()
+    mavenCentral()
+  }
 }
 
 ext {
@@ -53,6 +71,8 @@ test {
 }
 
 asciidoctor {
+  inputs.dir snippetsDir
+
   logDocuments true
   options doctype: 'book'
   attributes 'revnumber': '1.0.0'

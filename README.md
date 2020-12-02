@@ -5,6 +5,8 @@ Java Web Application template.
 * [x] Integration SpringMVC with [thymeleaf](https://www.thymeleaf.org).
 * [] Integration [Spring Data JPA](https://spring.io/projects/spring-data-jpa).
 * [x] Integration [Spring Data REST](https://spring.io/projects/spring-data-rest).
+     [spring-rest-docs] https://www.vojtechruzicka.com/spring-rest-docs
+     [test-java-spring-boot-junit5](https://developer.okta.com/blog/2019/03/28/test-java-spring-boot-junit5)
 * [] Integration with [REST Docs](https://spring.io/projects/spring-restdocs).
 * [] Database schemas migration tools config.
 * [] Spring security for KeyCloak integration.
